@@ -81,21 +81,16 @@ def part1():
     inpt = get_input()
 
     sum_pts = 0
-    for round in inpt:
+    for turn in inpt:
         pts = 0
-        print(round)
-        enemy_move = symbol_to_number_map_part1[round[0]]
-        player_move = symbol_to_number_map_part1[round[1]]
+        enemy_move = symbol_to_number_map_part1[turn[0]]
+        player_move = symbol_to_number_map_part1[turn[1]]
         if win_map[player_move] == enemy_move:
-            print(f"Player won, + {WIN} + {player_move} pts")
             pts += WIN + player_move
         elif player_move == enemy_move:
-            print(f"Draw, + {DRAW} + {player_move} pts")
             pts += DRAW + player_move
         else:
-            print(f"Player lost, + {LOSE} + {player_move} pts")
             pts += LOSE + player_move
-        print(pts)
         sum_pts += pts
 
     return sum_pts
@@ -119,27 +114,22 @@ def part2():
     sum_pts = 0
     for turn in inpt:
         pts = 0
-        print(turn)
         enemy_move = symbol_to_number_map_part1[turn[0]]
         scenario = turn[1]
         if scenario == "X":  # lose
             player_move = win_map[enemy_move]
-            print(f"Player lost, + {LOSE} + {player_move} pts")
             pts = LOSE + player_move
         elif scenario == "Z":  # win
             player_move = lose_map[enemy_move]
-            print(f"Player won, + {WIN} + {player_move} pts")
             pts = WIN + player_move
         else:  # 'Y' otherwise - draw
             player_move = enemy_move
-            print(f"Draw, + {DRAW} + {player_move} pts")
             pts += DRAW + player_move
-        print(pts)
         sum_pts += pts
 
     return sum_pts
 
 
 if __name__ == '__main__':
-    # print(part1())
+    print(part1())
     print(part2())
