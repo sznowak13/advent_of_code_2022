@@ -81,16 +81,7 @@ def part1():
 
     In how many assignment pairs does one range fully contain the other?
     """
-    inpt = get_input()
-
-    fully_overlapping_pairs = 0
-    for sector1, sector2 in inpt:
-        s1 = Sector(sector1)
-        s2 = Sector(sector2)
-        if s1 in s2 or s2 in s1:
-            fully_overlapping_pairs += 1
-
-    return fully_overlapping_pairs
+    return sum(map(lambda s: Sector(s[0]) in Sector(s[1]) or Sector(s[1]) in Sector(s[0]), get_input()))
 
 
 def part2():
@@ -111,17 +102,7 @@ def part2():
     In how many assignment pairs do the ranges overlap?
 
     """
-
-    inpt = get_input()
-
-    overlapping_pairs = 0
-    for sector1, sector2 in inpt:
-        s1 = Sector(sector1)
-        s2 = Sector(sector2)
-        if s1 & s2:
-            overlapping_pairs += 1
-
-    return overlapping_pairs
+    return sum(map(lambda s: Sector(s[0]) & Sector(s[1]), get_input()))
 
 
 if __name__ == '__main__':
