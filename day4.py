@@ -25,14 +25,10 @@ class Sector:
         return f"<Sector object [{self.start}-{self.end}]>"
 
     def __contains__(self, other):
-        if self.start >= other.start and self.end <= other.end:
-            return True
-        return False
+        return self.start >= other.start and self.end <= other.end
 
     def __and__(self, other):
-        if self.end >= other.start and self.start <= other.end:
-            return True
-        return False
+        return self.end >= other.start and self.start <= other.end
 
 
 def part1():
